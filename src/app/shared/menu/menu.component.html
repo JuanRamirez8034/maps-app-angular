@@ -1,0 +1,14 @@
+<ul class="list-group">
+        
+    <li class="list-group-item text-black" 
+        *ngFor="let item of menu" 
+        [routerLink]="item.path"
+        routerLinkActive="active "
+    >
+        <span class="text-decoration-none">
+            <i [class]="item.bootsTrapIco"></i>
+            <span> {{item.name | titlecase}}</span>
+        </span>
+    </li>
+    
+</ul>

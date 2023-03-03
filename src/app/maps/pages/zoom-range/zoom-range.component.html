@@ -1,0 +1,28 @@
+<div #zoomMapRang id="zoomMapRang"></div>
+
+<div class="longLat-map">
+    <span><b>Zoom: </b>{{zoom | number : '1.2-2'}}</span>
+    <br><hr>
+    <span><b>Lat: </b>{{lat | number : '1.2-4'}}</span>
+    <br>
+    <span><b>Long: </b>{{long | number : '1.2-4'}}</span>
+</div>
+
+<div class="controls-map-zoom">
+    <label>Zoom</label>
+    <div class="controls-range-zoom">
+        <input 
+            type="range" 
+            class="form-range" 
+            [value]="zoom"
+            min="1.2"
+            max="20"
+            #rangeZoom
+            (click)="zoomManager(rangeZoom.value)"
+        >
+    </div>
+    <div class="controls-btn-zoom">
+        <button class="btn-zoom" (click)="zoomManager('+')"><i class="bi bi-plus-circle"></i></button>
+        <button class="btn-zoom" (click)="zoomManager('-')"><i class="bi bi-dash-circle"></i></button>
+    </div>
+</div>
