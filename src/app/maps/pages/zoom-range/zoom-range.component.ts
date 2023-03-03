@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { MapsService } from '../../services/maps.service';
 import * as mapboxgl from 'mapbox-gl';
 
@@ -7,7 +7,7 @@ import * as mapboxgl from 'mapbox-gl';
   templateUrl: './zoom-range.component.html',
   styleUrls: ['./zoom-range.component.css']
 })
-export class ZoomRangeComponent implements OnInit, AfterViewInit{
+export class ZoomRangeComponent implements OnInit, AfterViewInit, OnDestroy{
 
   private map !: mapboxgl.Map; //variable para instanciar el mapa
   @ViewChild('zoomMapRang') private mapContainer !: ElementRef; //variable del elemento contenedor del mapa
@@ -54,6 +54,13 @@ export class ZoomRangeComponent implements OnInit, AfterViewInit{
     //   center:{lat:-71.6342950814426, long:10.693535739004405},
     //   zoom: 8,
     // });
+  }
+
+  ngOnDestroy(): void {
+    console.log('Destruyendo los eventos del mapa por rango');
+    
+    this.map.off('move', ()=>{});
+    this.map.off('zoom', ()=>{});
   }
 
   // funcion para manejar el zoom en los botones del zoom
