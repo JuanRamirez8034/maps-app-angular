@@ -14,6 +14,14 @@ interface MapCenter{
   lat  : number;
 }
 
+interface MapMarker{
+  mapOfMapBox       : mapboxgl.Map;
+  customMarkerModel?: HTMLElement;
+  center            : MapCenter;
+  draggable        ?: boolean;
+  color            ?: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -42,6 +50,28 @@ export class MapsService {
 
     return map;//retornando el mapa
 
+  }
+
+  // servicio para generar nuevos marcadores
+  public createMarker(options:MapMarker):mapboxgl.Marker{
+
+    // si existe un elemento html(marcador personalizado) personalizado se agrega, sino se coloca undefine
+    const customMarker : HTMLElement | undefined = options.customMarkerModel ? options.customMarkerModel : undefined;
+    // si existe la propiedad draggable se añade true a su valor en la configuracion del marcador (permite moverse)
+    const draggableBoolean : boolean = options.draggable ? true : false;
+    // si existe la configuracion de generar color ramdon
+    const color = options.color ? options.color : undefined;
+
+    const marker = new mapboxgl.Marker( customMarker, {draggable:draggableBoolean, color:color} )//agregando el elemento html personalizado si existe
+    .setLngLat([  options.center.lat, options.center.long]) //agregando la latitud y longitud del marcador
+    .addTo(options.mapOfMapBox);//agregando la referencia al mapa en el cual se colocará el elemento
+
+    return marker;
+  }
+
+  //servicio para generar colores hexadecimal ramdon
+  public ramdonColor():string{
+    return "#xxxxxx".replace(/x/g, y=>(Math.random()*16|0).toString(16));
   }
 
 }
