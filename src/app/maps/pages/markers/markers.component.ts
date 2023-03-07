@@ -96,8 +96,11 @@ export class MarkersComponent implements OnInit, AfterViewInit{
   public clearMarkers():void{
     console.log('Limpiando todos los marcadores');
     
-    localStorage.removeItem('markers');
+    this.markers.forEach(m=>{ m.markerData?.remove() });
+    
     this.markers = [];
+    
+    localStorage.removeItem('markers');
   }
 
 
