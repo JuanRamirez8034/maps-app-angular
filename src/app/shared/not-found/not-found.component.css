@@ -1,0 +1,14 @@
+.messge{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    align-items: end;
+}
+
+
+@media (max-width:460px) {
+    .messge{
+        flex-wrap: wrap;
+    }
+}
