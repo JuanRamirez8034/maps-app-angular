@@ -1,1 +1,13 @@
-<p>properties works!</p>
+<div class="container-properties">
+    <!-- card -->
+    <div class="card card-size" *ngFor="let property of properties" (click)="alert();">
+        <app-small-map class="card-img-top small-map-size" [lat]="property.lngLat.lat" [long]="property.lngLat.long"/> 
+        <div class="card-body">
+            <span class="card-title">{{property.title}}</span>
+            <p class="card-text">
+                {{property.description}}
+            </p>
+        </div>
+    </div>
+    
+</div>

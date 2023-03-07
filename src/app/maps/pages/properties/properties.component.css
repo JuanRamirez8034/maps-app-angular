@@ -1,0 +1,29 @@
+.card-size{
+    width: 100%;
+}
+
+.small-map-size{
+    height: 200px;
+}
+
+.container-properties{
+    padding: 5px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: calc(100% - 200px);
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 320px));
+    grid-template-rows: auto;
+    gap: 20px;
+    justify-content: center;
+    overflow: auto;
+}
+
+
+@media (max-width:460px) {
+    .container-properties{
+        width: 100%;
+    }
+}

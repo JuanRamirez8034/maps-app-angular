@@ -7,11 +7,11 @@ import { FullScreenMapComponent } from './pages/full-screen-map/full-screen-map.
 import { MarkersComponent } from './pages/markers/markers.component';
 import { ZoomRangeComponent } from './pages/zoom-range/zoom-range.component';
 import { PropertiesComponent } from './pages/properties/properties.component';
+import { ComponentsModule } from './components/components.module';
 
 
 @NgModule({
   declarations: [
-    SmallMapComponent,
     FullScreenMapComponent,
     MarkersComponent,
     ZoomRangeComponent,
@@ -19,7 +19,8 @@ import { PropertiesComponent } from './pages/properties/properties.component';
   ],
   imports: [
     CommonModule,
-    MapsRoutingModule
+    MapsRoutingModule,
+    ComponentsModule
   ]
 })
 export class MapsModule { }

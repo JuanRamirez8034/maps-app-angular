@@ -3,10 +3,11 @@ import * as mapboxgl from 'mapbox-gl';
 import { environment } from 'src/environments/environment';
 
 interface MapBuild{
-  containerId :string | HTMLElement;
-  controls   ?:boolean;
-  center     ?:MapCenter;
-  zoom       ?:number;
+  zoom              ?:number;
+  center            ?:MapCenter;
+  controls          ?:boolean;
+  containerId        :string | HTMLElement;
+  disableIteractive ?:boolean;
 }
 
 interface MapCenter{
@@ -41,6 +42,7 @@ export class MapsService {
       center    : options.center ? [  options.center.lat, options.center.long] : undefined,  //cooordenadas para centarra el mapa
       zoom      : options.zoom ? options.zoom : 0,                                           //cantidad de zoom inicial del mapa
       style     : 'mapbox://styles/mapbox/streets-v11',                                      //estilos del mapa
+      interactive: options.disableIteractive ? false : true                                         //si el mapa se puede manipular o no
     });
 
 
